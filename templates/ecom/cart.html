@@ -135,14 +135,14 @@
 						        	<p>{{p.description}}</p>
 						        </td>
 						        
-						        <td class="price" >$&nbsp;<p id="pri">{{p.price}}</p></td>
+						        <td class="price" >$&nbsp;<h4 id="pri">{{p.price}}</h4></td>
 						        
 						        <td class="quantity">
 						        	<div class="input-group mb-3">
 					             	<input type="text" oninput="TotalQuant()" id="QuantityInputField" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
 					          	</div>
 					          </td>						        
-						        <td class="total">$&nbsp;<p  id="tot"></p> </td>
+						        <td class="total">$&nbsp;<h4  id="tot"> {{p.price}} </h4> </td>
 						      </tr><!-- END TR-->
 
 						      <!-- <tr class="text-center">
