@@ -390,7 +390,7 @@
 		});
 
 		function TotalQuant() {
-			var quantityInputed = document.getElementsByClassName("QuantityInputField").value;
+			var quantityInputed = document.getElementById("QuantityInputField").value;
 			var price = document.getElementsByClassName("price");
 			TotalQuantPrice = price * quantityInputed;
 			document.getElementsByClassName("total") = TotalQuantPrice;
