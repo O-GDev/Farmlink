@@ -135,7 +135,7 @@
 						        	<p>{{p.description}}</p>
 						        </td>
 						        
-						        <td class="price">$ {{p.price}}</td>
+						        <td class="price" id="pri">$ {{p.price}}</td>
 						        
 						        <td class="quantity">
 						        	<div class="input-group mb-3">
@@ -391,8 +391,8 @@
 
 		function TotalQuant() {
 			var quantityInputed = document.getElementById("QuantityInputField").value;
-			var price = document.getElementsByClassName("price");
-			var TotalQuantPrice = price + quantityInputed;
+			var price = document.getElementById("pri").value;
+			var TotalQuantPrice = price * quantityInputed;
 			document.getElementById("tot").innerHTML = TotalQuantPrice;
 			alert(price)
 		}
