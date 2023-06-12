@@ -391,7 +391,7 @@
 
 		function TotalQuant() {
 			var quantityInputed = document.getElementById("QuantityInputField").value;
-			var price = document.getElementById("pri").value;
+			var price = document.getElementById("pri").innerText;
 			var TotalQuantPrice = price * quantityInputed;
 			document.getElementById("tot").innerHTML = TotalQuantPrice;
 			alert(price)
