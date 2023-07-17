@@ -23,8 +23,9 @@ urlpatterns = [
     path('view-feedback', views.view_feedback_view,name='view-feedback'),
 
     path('adminclick', views.adminclick_view),
-    path('adminlogin', LoginView.as_view(template_name='ecom/sellerlogin.html'),name='adminlogin'),
+    path('sellerlogin', LoginView.as_view(template_name='ecom/sellerlogin.html'),name='sellerlogin'),
     path('admin-dashboard', views.admin_dashboard_view,name='admin-dashboard'),
+    path('farmerregister', views.farmer_register),
 
     path('view-customer', views.view_customer_view,name='view-customer'),
     path('delete-customer/<int:pk>', views.delete_customer_view,name='delete-customer'),

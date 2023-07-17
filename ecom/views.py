@@ -25,7 +25,21 @@ def home_view(request):
 def adminclick_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
-    return HttpResponseRedirect('adminlogin')
+    return HttpResponseRedirect('sellerlogin')
+
+def farmer_register(request):
+    farmerForm=forms.FamerRegisterForm()
+    mydict={'farmerForm':farmerForm}
+    if request.method=='POST':
+        farmerForm=forms.FamerRegisterForm(request.POST,request.FILES)
+        if farmerForm.is_valid():
+            farmer=farmerForm.save()
+            farmer.password(farmer.password)
+            farmer.save()
+            my_farmer_group = Group.objects.get_or_create(name='FARMER')
+            my_farmer_group[0].user_set.add(farmer)
+        return HttpResponseRedirect('sellerlogin')
+    return render(request,'ecom/farmerRegister.html',context=mydict)    
 
 
 def customer_signup_view(request):
@@ -51,19 +65,22 @@ def customer_signup_view(request):
 def is_customer(user):
     return user.groups.filter(name='CUSTOMER').exists()
 
-
+def is_farmer(farmer):
+    return farmer.groups.filter(name='FARMER').exists()
 
 #---------AFTER ENTERING CREDENTIALS WE CHECK WHETHER USERNAME AND PASSWORD IS OF ADMIN,CUSTOMER
 def afterlogin_view(request):
     if is_customer(request.user):
         return redirect('customer-home')
-    else:
+    elif is_farmer(request.farmer):
         return redirect('admin-dashboard')
+    else:
+        return redirect('')
 
 #---------------------------------------------------------------------------------
 #------------------------ ADMIN RELATED VIEWS START ------------------------------
 #---------------------------------------------------------------------------------
-@login_required(login_url='adminlogin')
+@login_required(login_url='sellerlogin')
 def admin_dashboard_view(request):
     # for cards on dashboard
     customercount=models.Customer.objects.all().count()
@@ -90,13 +107,13 @@ def admin_dashboard_view(request):
 
 
 # admin view customer table
-@login_required(login_url='adminlogin')
+@login_required(login_url='sellerlogin')
 def view_customer_view(request):
     customers=models.Customer.objects.all()
     return render(request,'ecom/view_customer.html',{'customers':customers})
 
 # admin delete customer
-@login_required(login_url='adminlogin')
+@login_required(login_url='sellerlogin')
 def delete_customer_view(request,pk):
     customer=models.Customer.objects.get(id=pk)
     user=models.User.objects.get(id=customer.user_id)
@@ -105,7 +122,7 @@ def delete_customer_view(request,pk):
     return redirect('view-customer')
 
 
-@login_required(login_url='adminlogin')
+@login_required(login_url='sellerlogin')
 def update_customer_view(request,pk):
     customer=models.Customer.objects.get(id=pk)
     user=models.User.objects.get(id=customer.user_id)
@@ -124,14 +141,14 @@ def update_customer_view(request,pk):
     return render(request,'ecom/admin_update_customer.html',context=mydict)
 
 # admin view the product
-@login_required(login_url='adminlogin')
+@login_required(login_url='sellerlogin')
 def admin_products_view(request):
     products=models.Product.objects.all()
     return render(request,'ecom/admin_products.html',{'products':products})
 
 
 # admin add product by clicking on floating button
-@login_required(login_url='adminlogin')
+@login_required(login_url='sellerlogin')
 def admin_add_product_view(request):
     productForm=forms.ProductForm()
     if request.method=='POST':
@@ -142,14 +159,14 @@ def admin_add_product_view(request):
     return render(request,'ecom/admin_add_products.html',{'productForm':productForm})
 
 
-@login_required(login_url='adminlogin')
+@login_required(login_url='sellerlogin')
 def delete_product_view(request,pk):
     product=models.Product.objects.get(id=pk)
     product.delete()
     return redirect('admin-products')
 
 
-@login_required(login_url='adminlogin')
+@login_required(login_url='sellerlogin')
 def update_product_view(request,pk):
     product=models.Product.objects.get(id=pk)
     productForm=forms.ProductForm(instance=product)
@@ -161,7 +178,7 @@ def update_product_view(request,pk):
     return render(request,'ecom/admin_update_product.html',{'productForm':productForm})
 
 
-@login_required(login_url='adminlogin')
+@login_required(login_url='sellerlogin')
 def admin_view_booking_view(request):
     orders=models.Orders.objects.all()
     ordered_products=[]
@@ -174,14 +191,14 @@ def admin_view_booking_view(request):
     return render(request,'ecom/admin_view_booking.html',{'data':zip(ordered_products,ordered_bys,orders)})
 
 
-@login_required(login_url='adminlogin')
+@login_required(login_url='sellerlogin')
 def delete_order_view(request,pk):
     order=models.Orders.objects.get(id=pk)
     order.delete()
     return redirect('admin-view-booking')
 
 # for changing status of order (pending,delivered...)
-@login_required(login_url='adminlogin')
+@login_required(login_url='sellerlogin')
 def update_order_view(request,pk):
     order=models.Orders.objects.get(id=pk)
     orderForm=forms.OrderForm(instance=order)
@@ -194,7 +211,7 @@ def update_order_view(request,pk):
 
 
 # admin view the feedback
-@login_required(login_url='adminlogin')
+@login_required(login_url='sellerlogin')
 def view_feedback_view(request):
     feedbacks=models.Feedback.objects.all().order_by('-id')
     return render(request,'ecom/view_feedback.html',{'feedbacks':feedbacks})

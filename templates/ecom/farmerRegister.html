@@ -3,10 +3,10 @@
 {% load widget_tweaks %}
 <html lang="en">
   <head>
-    <title>Farm Link</title>
+    <title>Farm Link - Register</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
@@ -29,142 +29,150 @@
     <link rel="stylesheet" href="{% static 'css/flaticon.css'%}">
     <link rel="stylesheet" href="{% static 'css/icomoon.css'}">
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    <style>
-            body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    /* background: linear-gradient(to right, #b92b27, #1565c0) */
+    <link rel="stylesheet"
+    href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style media="screen">
+  body {
+margin: 0;
+padding: 0;
+font-family: sans-serif;
+/* background: linear-gradient(to right, #b92b27, #1565c0) */
 }
 
 .box {
-    width: 100%;
-    /* padding: 40px;
-    position: absolute;
-    top: 50%;
-    left: 50%; */
-    /* background: #3E454C; */
-    text-align: center;
-    transition: 0.25s;
-    /* margin-top: 100px; */
-    border-radius: 50px;
+/* width: 100%;
+padding: 40px;
+position: absolute;
+top: 50%;
+left: 50%;
+background: #3E454C; */
+text-align: center;
+transition: 0.25s;
+/* margin-top: 100px; */
+border-radius: 50px;
 }
 
 .box input[type="text"],
-.box input[type="password"] {
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #ffffff;
-    padding: 10px 10px;
-    width: 80%;
-    outline: none;
-    color: white;
-    border-radius: 24px;
-    transition: 0.25s
+.box input[type="password"],
+.box input[type="select"] {
+border: 0;
+background: gray;
+display: block;
+margin: 20px auto;
+text-align: center;
+border: 2px solid #ffffff;
+padding: 10px 10px;
+width: 80%;
+outline: none;
+color: white;
+border-radius: 24px;
+transition: 0.25s
 }
 
 .box h1 {
-    color: white;
-    /* text-transform: uppercase; */
-    font-weight: 500
+color: white;
+/* text-transform: uppercase; */
+font-weight: 500
 }
 
 .box input[type="text"]:focus,
-.box input[type="password"]:focus {
-    width: 30%;
-    border-color: #d3d3d3
+.box input[type="password"]:focus,
+.box input[type="select"]:focus {
+width: 30%;
+border-color: #d3d3d3
 }
 
 .box input[type="submit"] {
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #2ecc71;
-    padding: 14px 40px;
-    outline: none;
-    color: white;
-    border-radius: 24px;
-    transition: 0.25s;
-    cursor: pointer
+border: 0;
+background: none;
+display: block;
+margin: 20px auto;
+text-align: center;
+border: 2px solid #2ecc71;
+padding: 14px 40px;
+outline: none;
+color: white;
+border-radius: 24px;
+transition: 0.25s;
+cursor: pointer
 }
 
 .box input[type="submit"]:hover {
-    background: #2ecc71
+background: #2ecc71
 }
 
 .forgot {
-    text-decoration: underline
+text-decoration: underline
 }
 
 ul.social-network {
-    list-style: none;
-    display: inline;
-    margin-left: 0 !important;
-    padding: 0
+list-style: none;
+display: inline;
+margin-left: 0 !important;
+padding: 0
 }
 
 ul.social-network li {
-    display: inline;
-    margin: 0 5px
+display: inline;
+margin: 0 5px
 }
 
 .social-network a.icoFacebook:hover {
-    background-color: #3B5998
+background-color: #3B5998
 }
 
 .social-network a.icoTwitter:hover {
-    background-color: #33ccff
+background-color: #33ccff
 }
 
 .social-network a.icoGoogle:hover {
-    background-color: #BD3518
+background-color: #BD3518
 }
 
 .social-network a.icoFacebook:hover i,
 .social-network a.icoTwitter:hover i,
 .social-network a.icoGoogle:hover i {
-    color: #fff
+color: #fff
 }
 
 a.socialIcon:hover,
 .socialHoverClass {
-    color: #44BCDD
+color: #44BCDD
 }
 
 .social-circle li a {
-    display: inline-block;
-    position: relative;
-    margin: 0 auto 0 auto;
-    border-radius: 50%;
-    text-align: center;
-    width: 50px;
-    height: 50px;
-    font-size: 20px
+display: inline-block;
+position: relative;
+margin: 0 auto 0 auto;
+border-radius: 50%;
+text-align: center;
+width: 50px;
+height: 50px;
+font-size: 20px
 }
 
 .social-circle li i {
-    margin: 0;
-    line-height: 50px;
-    text-align: center
+margin: 0;
+line-height: 50px;
+text-align: center
 }
 
 .social-circle li a:hover i,
 .triggeredHover {
-    transform: rotate(360deg);
-    transition: all 0.2s
+transform: rotate(360deg);
+transition: all 0.2s
 }
 
 .social-circle i {
-    color: #fff;
-    transition: all 0.8s;
-    transition: all 0.8s
+color: #fff;
+transition: all 0.8s;
+transition: all 0.8s
 }
-    </style>
+</style>
+
+
   </head>
   <body class="goto-here">
 		<div class="py-1 bg-primary">
@@ -196,15 +204,15 @@ a.socialIcon:hover,
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav ml-auto">
+	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle"  id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Register</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown04">
-                <a class="dropdown-item" href="/customersignup">Register As Buyer</a>
-                <a class="dropdown-item" href="/farmerregister">Register As Farmer</a>
-              </div>
-              </li>
+            <a class="nav-link dropdown-toggle"  id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Register</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown04">
+              <a class="dropdown-item" href="/customersignup">Register As Buyer</a>
+              <a class="dropdown-item" href="/farmerregister">Register As Farmer</a>
+            </div>
+            </li>
 	          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle"  id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -216,7 +224,8 @@ a.socialIcon:hover,
               </div>
             </li>
 	          <li class="nav-item"><a href="/contactus" class="nav-link">Contact</a></li>
-	          <li class="nav-item"><a href="/aboutus" class="nav-link">About Us</a></li><li class="nav-item dropdown">
+	          <li class="nav-item"><a href="/aboutus" class="nav-link">About Us</a></li>
+            <li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle"  id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown04">
 					<a class="dropdown-item" href="/customerlogin">Login As Buyer</a>
@@ -231,48 +240,41 @@ a.socialIcon:hover,
 	  </nav>
     <!-- END nav -->
 
-    <div class="hero-wrap hero-bread" style="background-image: url('/static/images/bg_1.jpg');">
+    <div class="hero-wrap hero-bread" style="background-image: url('static/images/bg_1.jpg');">
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="/">Home</a></span> <span>Login</span></p>
-            <h1 class="mb-0 bread">Login As Buyer</h1>
+          	<p class="breadcrumbs"><span class="mr-2"><a href="/">Home</a></span> <span>Registration</span></p>
+            <h1 class="mb-0 bread">Farmer Registration</h1>
           </div>
         </div>
       </div>
     </div>
 
-    
+
+    <!-- Registration Form -->
     <section class="ftco-section ftco-cart">
 			<div class="container">
-        <div style="padding: 50px; background-color:white;box-shadow: 1px 1px 2px black, 0 0 15px black, 0 0 5px black;border-radius: 20px;">
-          <div style="padding: 10px;">
-            <form style="margin:auto" class="box" method="post">
-                {% csrf_token %}
-              <div class="input-icons">
-                  <i class="fa fa-envelope icon">
-                </i>
-                {% render_field form.username class="form-control" placeholder="Username" autocomplete="off" %}
-              </div>
-    
-              <div class="input-icons">
-                  <i class="fa fa-lock icon">
-                </i>
-                 {% render_field form.password class="form-control" placeholder="Password" %}
-              </div>              
-            </div>
-            <div style="margin-top: 45px;align-items: center;justify-content: center;display: flex;">
-              <div >
-                <input type="submit" name="" value="Sign In" style="color: white;padding-left: 100px;padding-right: 100px;border-width: 0px;font-weight: 600;background-color: #82ae46;border-radius: 30px;font-size: larger;padding-top: 5px;padding-bottom: 5px;">
-              </div>
-              </div>
+        <div style="background-color:white;box-shadow: 1px 1px 2px black, 0 0 15px black, 0 0 5px black;border-radius: 20px;position: relative;">
+          <div style="padding: 100px;">
+            <form class="box" style="margin:auto;align-items: center;justify-content: center;" method="post"> 
+              {% csrf_token %}
+           {% render_field farmerForm.firstname class="form-control" placeholder="First Name" %}
+            {% render_field farmerForm.lastname class="form-control" placeholder="Last Name" %}
+              {% render_field farmerForm.email class="form-control" placeholder="Username" %}
+                {% render_field farmerForm.password class="form-control" placeholder="Password" %}
+                 
+                      <div style="margin-top: 45px;align-items: center;justify-content: center;display: flex;">
+                        <div >
+                          <input type="submit" value="Register" style="color: white;padding-left: 100px;padding-right: 100px;border-width: 0px;font-weight: 600;background-color: #82ae46;border-radius: 30px;font-size: larger;padding-top: 5px;padding-bottom: 5px;">
+                        </div>
+
+          </div>
           </form>
           </div>
         </div>			
 			</div>
 		</section>
-
-
 
 		<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
       <div class="container py-4">
@@ -317,10 +319,10 @@ a.socialIcon:hover,
             <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">Menu</h2>
               <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">Shop</a></li>
-                <li><a href="#" class="py-2 d-block">About</a></li>
+                <li><a href="/shop" class="py-2 d-block">Shop</a></li>
+                <li><a href="/aboutus" class="py-2 d-block">About</a></li>
                 <li><a href="#" class="py-2 d-block">Journal</a></li>
-                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                <li><a href="/contactus" class="py-2 d-block">Contact Us</a></li>
               </ul>
             </div>
           </div>
@@ -336,7 +338,7 @@ a.socialIcon:hover,
 	              </ul>
 	              <ul class="list-unstyled">
 	                <li><a href="#" class="py-2 d-block">FAQs</a></li>
-	                <li><a href="#" class="py-2 d-block">Contact</a></li>
+	                <li><a href="/contactus" class="py-2 d-block">Contact</a></li>
 	              </ul>
 	            </div>
             </div>
@@ -388,7 +390,6 @@ a.socialIcon:hover,
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="{% static 'js/google-map.js'%}"></script>
   <script src="{% static 'js/main.js'%}"></script>
-
-   
+    
   </body>
 </html>

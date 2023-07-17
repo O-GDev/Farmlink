@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+
 # Create your models here.
 class Customer(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
@@ -14,6 +15,12 @@ class Customer(models.Model):
     def __str__(self):
         return self.user.first_name
 
+class Farmer(models.Model):  
+    firstname = models.CharField(max_length=255)
+    lastname = models.CharField(max_length=255)
+    email = models.CharField(max_length=255,unique=True)
+    password = models.CharField(max_length=255)
+    
 
 class Product(models.Model):
     name=models.CharField(max_length=40)
