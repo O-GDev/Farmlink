@@ -3,13 +3,18 @@ from django.contrib.auth.models import User
 from . import models
 
 
-class FamerRegisterForm(forms.ModelForm):
+class FarmerRegisterForm(forms.ModelForm):
     class Meta:
-        model=models.Farmer
-        fields=['firstname','lastname','email','password']
+        model=User
+        fields=['first_name','last_name','username','password']
         widgets = {
         'password': forms.PasswordInput()
         }
+        
+class FarmerForm(forms.ModelForm):
+    class Meta:
+        model=models.Customer
+        fields=['address','mobile']
 
 class CustomerUserForm(forms.ModelForm):
     class Meta:

@@ -28,16 +28,21 @@ def adminclick_view(request):
     return HttpResponseRedirect('sellerlogin')
 
 def farmer_register(request):
-    farmerForm=forms.FamerRegisterForm()
-    mydict={'farmerForm':farmerForm}
+    userForm=forms.FarmerRegisterForm()
+    farmerForm=forms.FarmerForm()
+    mydict={'userForm':userForm,'farmerForm':farmerForm}
     if request.method=='POST':
-        farmerForm=forms.FamerRegisterForm(request.POST,request.FILES)
-        if farmerForm.is_valid():
-            farmer=farmerForm.save()
-            farmer.password(farmerForm.password)
+        farmerUserForm=forms.FarmerRegisterForm(request.POST)
+        FarmerForm=forms.FarmerForm(request.POST,request.FILES)
+        if userForm.is_valid() and farmerForm.is_valid():
+            user=farmerUserForm.save()
+            user.set_password(user.password)
+            user.save()
+            farmer=FarmerForm.save(commit=False)
+            farmer.user=user
             farmer.save()
             my_farmer_group = Group.objects.get_or_create(name='FARMER')
-            my_farmer_group[0].user_set.add(farmer)
+            my_farmer_group[0].user_set.add(user)
         return HttpResponseRedirect('sellerlogin')
     return render(request,'ecom/farmerRegister.html',context=mydict)    
 
@@ -65,17 +70,17 @@ def customer_signup_view(request):
 def is_customer(user):
     return user.groups.filter(name='CUSTOMER').exists()
 
-def is_farmer(farmer):
-    return farmer.groups.filter(name='FARMER').exists()
+def is_farmer(user):
+    return user.groups.filter(name='FARMER').exists()
 
 #---------AFTER ENTERING CREDENTIALS WE CHECK WHETHER USERNAME AND PASSWORD IS OF ADMIN,CUSTOMER
 def afterlogin_view(request):
     if is_customer(request.user):
         return redirect('customer-home')
-    elif is_farmer(request.farmer):
-        return redirect('admin-dashboard')
+    # elif is_farmer(request.user):
+    #     return redirect('admin-dashboard')
     else:
-        return redirect('')
+        return redirect('admin-dashboard')
 
 #---------------------------------------------------------------------------------
 #------------------------ ADMIN RELATED VIEWS START ------------------------------

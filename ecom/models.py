@@ -15,12 +15,6 @@ class Customer(models.Model):
     def __str__(self):
         return self.user.first_name
 
-class Farmer(models.Model):  
-    firstname = models.CharField(max_length=255)
-    lastname = models.CharField(max_length=255)
-    email = models.CharField(max_length=255,unique=True)
-    password = models.CharField(max_length=255)
-    
 
 class Product(models.Model):
     name=models.CharField(max_length=40)
@@ -30,7 +24,19 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-
+class Farmer(models.Model):  
+    user=models.OneToOneField(User,on_delete=models.CASCADE)
+    address = models.CharField(max_length=40)
+    mobile = models.CharField(max_length=20,null=False)
+    @property
+    def get_name(self):
+        return self.user.first_name+" "+self.user.last_name
+    @property
+    def get_id(self):
+        return self.user.id
+    def __str__(self):
+        return self.user.first_name
+    
 class Orders(models.Model):
     STATUS =(
         ('Pending','Pending'),
