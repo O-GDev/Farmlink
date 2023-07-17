@@ -34,7 +34,7 @@ def farmer_register(request):
         farmerForm=forms.FamerRegisterForm(request.POST,request.FILES)
         if farmerForm.is_valid():
             farmer=farmerForm.save()
-            farmer.password(farmer.password)
+            farmer.password(farmerForm.password)
             farmer.save()
             my_farmer_group = Group.objects.get_or_create(name='FARMER')
             my_farmer_group[0].user_set.add(farmer)
