@@ -77,7 +77,7 @@ def is_farmer(user):
 def afterlogin_view(request):
     if is_customer(request.user):
         return redirect('customer-home')
-    # elif is_farmer(request.user):
+    # else if is_farmer(request.user):
     #     return redirect('admin-dashboard')
     else:
         return redirect('admin-dashboard')

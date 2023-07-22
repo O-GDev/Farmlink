@@ -9,7 +9,7 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home_view,name=''),
+    path('',views.home_view,name='farmlink'),
     path('afterlogin', views.afterlogin_view,name='afterlogin'),
     path('logout', LogoutView.as_view(template_name='ecom/index.html'),name='logout'),
     path('shop', views.shop_view, name='shop'),
@@ -23,7 +23,7 @@ urlpatterns = [
     path('view-feedback', views.view_feedback_view,name='view-feedback'),
 
     path('adminclick', views.adminclick_view),
-    path('sellerlogin', LoginView.as_view(template_name='ecom/sellerlogin.html'),name='sellerlogin'),
+    path('adminlogin', LoginView.as_view(template_name='ecom/sellerlogin.html'),name='sellerlogin'),
     path('admin-dashboard', views.admin_dashboard_view,name='admin-dashboard'),
     path('farmerregister', views.farmer_register),
 
